@@ -11,9 +11,6 @@ import android.widget.Button;
 
 import java.util.List;
 
-import io.goithub.gooin.beatbox.BeatBox;
-import io.goithub.gooin.beatbox.R;
-
 public class BeatBoxFragment extends Fragment {
 
     private BeatBox mBeatBox;
@@ -42,19 +39,28 @@ public class BeatBoxFragment extends Fragment {
         return view;
     }
 
-    private class SoundHolder extends RecyclerView.ViewHolder {
+    private class SoundHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         private Button mButton;
         private Sound mSound;
 
         public SoundHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_sound, parent, false));
 
-            mButton = (Button)itemView.findViewById(R.id.button);
+            mButton = (Button) itemView.findViewById(R.id.button);
+            mButton.setOnClickListener(this);
+
         }
 
         public void bindSound(Sound sound) {
             mSound = sound;
             mButton.setText(mSound.getName());
+        }
+
+        @Override
+        public void onClick(View view) {
+            mBeatBox.play(mSound);
+
         }
     }
 
