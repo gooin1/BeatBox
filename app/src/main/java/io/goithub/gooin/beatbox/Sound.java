@@ -1,8 +1,5 @@
 package io.goithub.gooin.beatbox;
 
-/**
- * Created by gooin on 2016/6/29.
- */
 public class Sound {
     private String mAssetPath;
     private String mName;
@@ -11,7 +8,6 @@ public class Sound {
         mAssetPath = assetPath;
         String[] components = assetPath.split("/");
         String filename = components[components.length - 1];
-
         mName = filename.replace(".wav", "");
     }
 
@@ -22,6 +18,4 @@ public class Sound {
     public String getName() {
         return mName;
     }
-
-
 }
